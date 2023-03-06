@@ -5,8 +5,15 @@ env:
 
 on:
   workflow_dispatch:
-  schedule:
-    - cron: "0 22 * * *"
+    inputs:
+      version:
+        description: "Version"
+        required: false
+        default: ""
+      ref:
+        description: "Ref (branch/tag/commit id)"
+        required: false
+        default: ""
 
 jobs:
   prepare_release:
@@ -28,10 +35,14 @@ jobs:
         env:
           RUST_BACKTRACE: 1
         run: |
-          $out = cargo xtask bump --nightly
+          $versionarg = "${{ github.event.inputs.version }}"
+          $versionarg = If ($versionarg.Length -gt 0) { "--version $versionarg" } else { "" }
+          $out = cargo xtask bump $versionarg.split() --nightly
+          $refarg = "${{ github.event.inputs.ref }}"
+          $versionarg = If ($versionarg.Length -gt 0) { "$versionarg" } else { "HEAD" }
           echo $out
           echo "::set-output name=version_tag::$(echo $out | sls -CaseSensitive -Pattern '^v.*$')"
-          echo "::set-output name=release_ref::$(git rev-parse HEAD)"
+          echo "::set-output name=release_ref::$(git rev-parse $versionarg)"
 
       - name: Create Release
         id: create_release
