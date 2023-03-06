@@ -40,10 +40,10 @@ jobs:
           $versionarg = If ($versionarg.Length -gt 0) { "--version $versionarg" } else { "" }
           $out = cargo xtask bump $versionarg.split() --nightly
           $refarg = "${{ github.event.inputs.ref }}"
-          $versionarg = If ($versionarg.Length -gt 0) { "$versionarg" } else { "HEAD" }
+          $refarg = If ($refarg.Length -gt 0) { "$refarg" } else { "HEAD" }
           echo $out
           echo "::set-output name=version_tag::$(echo $out | sls -CaseSensitive -Pattern '^v.*$')"
-          echo "::set-output name=release_ref::$(git rev-parse $versionarg)"
+          echo "::set-output name=release_ref::$(git rev-parse $refarg)"
 
       - name: Create Release
         id: create_release
