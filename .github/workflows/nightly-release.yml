@@ -42,7 +42,7 @@ jobs:
           $refarg = "${{ github.event.inputs.ref }}"
           $refarg = If ($refarg.Length -gt 0) { "$refarg" } else { "HEAD" }
           echo $out
-          echo "::set-output name=version_tag::$(echo $out | sls -CaseSensitive -Pattern '^v.*$')"
+          echo "::set-output name=version_tag::$(echo $out | sls -CaseSensitive -Pattern '^v.*$')_$(Get-Date -Format 'HH.mm.ss')"
           echo "::set-output name=release_ref::$(git rev-parse $refarg)"
 
       - name: Create Release
