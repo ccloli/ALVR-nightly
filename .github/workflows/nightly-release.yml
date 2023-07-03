@@ -25,7 +25,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
         with:
-          repository: "alvr-org/ALVR"
+          repository: "ccloli/ALVR"
           ref: ${{ github.event.inputs.ref }}
       - uses: actions-rs/toolchain@v1
         with:
@@ -57,7 +57,7 @@ jobs:
           # TODO: gather commit messages to post here in the body
           body: |
             Nightly release of ALVR: ${{ steps.gen_tag.outputs.version_tag }}
-            Generated from commit: alvr-org/ALVR@${{ steps.gen_tag.outputs.release_ref }}
+            Generated from commit: ccloli/ALVR@${{ steps.gen_tag.outputs.release_ref }}
           draft: true
           prerelease: false
 
@@ -73,7 +73,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
         with:
-          repository: "alvr-org/ALVR"
+          repository: "ccloli/ALVR"
           ref: ${{ needs.prepare_release.outputs.release_ref }}
       - uses: actions-rs/toolchain@v1
         with:
@@ -132,7 +132,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
         with:
-          repository: "alvr-org/ALVR"
+          repository: "ccloli/ALVR"
           ref: ${{ needs.prepare_release.outputs.release_ref }}
       - uses: actions-rs/toolchain@v1
         with:
@@ -171,7 +171,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
         with:
-          repository: "alvr-org/ALVR"
+          repository: "ccloli/ALVR"
           ref: ${{ needs.prepare_release.outputs.release_ref }}
       - uses: actions-rs/toolchain@v1
         with:
@@ -205,7 +205,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
         with:
-          repository: "alvr-org/ALVR"
+          repository: "ccloli/ALVR"
           ref: ${{ needs.prepare_release.outputs.release_ref }}
       - uses: actions-rs/toolchain@v1
         with:
@@ -268,7 +268,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
         with:
-          repository: "alvr-org/ALVR"
+          repository: "ccloli/ALVR"
           ref: ${{ needs.prepare_release.outputs.release_ref }}
       - uses: actions-rs/toolchain@v1
         with:
@@ -308,7 +308,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
         with:
-          repository: "alvr-org/ALVR"
+          repository: "ccloli/ALVR"
           ref: ${{ needs.prepare_release.outputs.release_ref }}
       - uses: actions-rs/toolchain@v1
         with:
@@ -345,7 +345,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
         with:
-          repository: "alvr-org/ALVR"
+          repository: "ccloli/ALVR"
           ref: ${{ needs.prepare_release.outputs.release_ref }}
       - uses: actions-rs/toolchain@v1
         with:
