@@ -408,10 +408,10 @@ jobs:
         prepare_release,
         build_windows_streamer,
         build_windows_streamer_debug,
-        build_windows_launcher,
+        # build_windows_launcher,
         build_linux_streamer,
         build_linux_streamer_debug,
-        build_linux_launcher,
+        # build_linux_launcher,
         build_android_client,
       ]
     steps:
